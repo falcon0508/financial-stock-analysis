@@ -19,7 +19,7 @@ ticker_encoder = joblib.load("ticker_encoder.pkl")
 # Folder where scalers are saved
 SCALER_FOLDER = "scalers"
 
-SEQUENCE_LENGTH = 60
+SEQUENCE_LENGTH = 30
 
 @app.route("/", strict_slashes=False)
 def index():
