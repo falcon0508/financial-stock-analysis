@@ -18,7 +18,7 @@ function StockChart({ ticker }) {
 
     const fetchHistory = async () => {
       try {
-        const res = await axios.get(`http://127.0.0.1:5000/historical?ticker=${ticker}`);
+        const res = await axios.get(`https://financial-stock-analysis-backend.onrender.com/historical?ticker=${ticker}`);
         console.log("Fetched historical data:", res.data);
 
         // Map to numbers and ensure proper keys

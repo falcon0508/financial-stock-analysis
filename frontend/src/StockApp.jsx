@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
-import stockData from "../../data/stock_data.json"; // contains only tickers your model supports
+import stockData from "../../data/stock_data.json";
 import StockChart from "./StockChart";
 
 function StockApp() {
@@ -28,7 +28,7 @@ function StockApp() {
     }
 
     try {
-      const res = await axios.get(`http://127.0.0.1:5000/predict?ticker=${upperTicker}`);
+      const res = await axios.get(`https://financial-stock-analysis-backend.onrender.com/predict?ticker=${upperTicker}`);
       setPrediction(res.data.prediction);
       setTicker(upperTicker); // only update ticker when predict is clicked
     } catch (error) {
