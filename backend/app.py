@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load multi-stock model
-model = load_model("multi_stock_model_cpu.h5")
+model = load_model("multi_stock_model_dense.tflite")
 
 # Load ticker encoder
 ticker_encoder = joblib.load("ticker_encoder.pkl")
