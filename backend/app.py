@@ -8,7 +8,7 @@ import os
 from keras.models import load_model
 
 app = Flask(__name__)
-CORS(app, origins=["https://financial-stock-analysis.onrender.com"])
+CORS(app, resources={r"/*": {"origins": "https://financial-stock-analysis.onrender.com"}})
 
 # Load multi-stock model
 model = load_model("multi_stock_model_gpu.h5")
@@ -91,6 +91,14 @@ def historical():
         print(e)
         return jsonify({"error": str(e)}), 500
 
+# Backend debugging
+
+import traceback
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    traceback.print_exc()  # this prints full traceback in Render logs
+    return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run()
