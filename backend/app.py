@@ -8,10 +8,10 @@ import os
 from keras.models import load_model
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://financial-stock-analysis.onrender.com"}})
+CORS(app)
 
 # Load multi-stock model
-model = load_model("multi_stock_model_gpu.h5")
+model = load_model("multi_stock_model_cpu.h5")
 
 # Load ticker encoder
 ticker_encoder = joblib.load("ticker_encoder.pkl")
@@ -20,6 +20,13 @@ ticker_encoder = joblib.load("ticker_encoder.pkl")
 SCALER_FOLDER = "scalers"
 
 SEQUENCE_LENGTH = 60
+
+@app.route("/", strict_slashes=False)
+def index():
+    return jsonify({
+        "status": "ok",
+        "message": "Financial Stock Analysis Backend is running."
+    })
 
 @app.route("/predict")
 def predict():
