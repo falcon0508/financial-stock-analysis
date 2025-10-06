@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import yfinance as yf
 import numpy as np
@@ -93,4 +93,4 @@ def historical():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
